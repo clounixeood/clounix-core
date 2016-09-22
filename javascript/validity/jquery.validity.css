@@ -1,0 +1,107 @@
+
+/*
+ * Styles used by the modal output mode.
+ * '.validity-modal-msg' is applied to the modal boxes 
+ * and '.validity-modal-msg:hover' is applied to suggest 
+ * to the user that the boxes are clickable.
+ */
+.validity-modal-msg { 
+    position:absolute; 
+    z-index:7000;
+    background-image: url(arrow.gif);
+    background-repeat: no-repeat; 
+    background-position: left;   
+
+    padding-left:30px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor:pointer; 
+    color: #FFFFFF;
+    font-size: 10px;
+    font-family: Verdana, Arial;
+    padding-right: 10px;
+
+}
+.validity-modal-msg:hover { 
+
+}
+.div-error-img { 
+
+  position:absolute;
+  top: 30px;
+}
+/*
+ * Styles used by the summary output mode.
+ * '.validity-summary-container' is a container on the page that should contain a UL 
+ * which is the actual summary. The container can hold 
+ * an extra bit of text (or anything really) that explains what the summary is.
+ * '.validity-erroneous' is applied to every input that fails.
+ */
+.validity-summary-container { display:none; }
+.validity-summary-output ul { }
+.validity-erroneous { border:solid 2px #f56600 !important; }
+
+
+.validity-tooltip {
+    cursor:pointer;
+    
+    padding-left:   10px;
+    padding-right:  8px;
+    padding-top:    5px;
+    padding-bottom: 5px;
+    width:auto;
+    
+    color:#FFFFFF;
+    font-size: 15px;
+    position: absolute;
+    background-color:#FF0613;
+    
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    
+}
+
+.validity-tooltip:hover {
+    -webkit-box-shadow: 0px 1px 2px #000000;
+    -moz-box-shadow: 0px 1px 2px #000000;
+    box-shadow: 0px 1px 2px #000000;
+}
+
+.validity-tooltip .validity-tooltip-outer, .validity-tooltip .validity-tooltip-inner {
+    position: absolute; 
+    width:0; 
+    height:0; 
+    border-right-width: 0;
+    background:none;
+    bottom:auto;
+}
+
+.validity-tooltip .validity-tooltip-outer {     
+    border-color:#FFFFFF;
+    border-style:solid;
+    
+    border-top: 12px solid transparent; 
+    border-bottom: 12px solid transparent;
+    /*border-right-width:20px;*/
+    border-right-width:20px;
+    border-right-style:solid;
+    border-right-color:inherit;
+    
+    border-left-width:0px;
+    top:0px;
+    left:-23px;
+}
+
+.validity-tooltip .validity-tooltip-inner {
+    border-top: 12px solid transparent; 
+    border-bottom: 12px solid transparent;
+    border-right: 20px solid #FF0613;
+    /*border-right-width:20px;
+    border-right-style:solid;
+    border-right-color:inherit;*/
+    
+    border-left-width:0px;
+    top:-12px;
+    left:4px;
+}
