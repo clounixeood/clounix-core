@@ -23,7 +23,6 @@ body {
   max-width: 600px;
 }  
   
-
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -33,7 +32,6 @@ body {
 
   border-top: 0px solid #ddd;
   border-bottom: 1px solid #ddd;
-
 }
 
 .navbar {
@@ -149,11 +147,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 
 .a-tooltip {
-
   text-decoration: none;
   border-bottom: 1px dotted #888888;
-  cursor: help;
-  
+  cursor: help; 
 }
 
 .tooltip {
@@ -178,11 +174,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   background-color: #222222;
   border-radius: 4px;
 }
-
+/* Tabella che scorre su mobile */
 .table-responsive {
   overflow-x: visible !important;
 }
 
+/* Contenitore solo bordi */
 .bs-callout {
     padding: 20px;
     margin: 0px 0;
@@ -241,6 +238,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     color: #5bc0de;
 }
 
+/* Contenitore pieno */
 .callout {
     padding: 20px;
     margin: 0 0 20px 0;
@@ -286,7 +284,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .callout-danger {
     border-color:#c23321;
     background-color: #dd4b39;
-
 }
 .callout-danger h4 {
     color: #fff;
@@ -301,13 +298,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .callout-info {
     border-color: #0097bc;
     background-color: #00c0ef;
-
 }
 .callout-info h4 {
     color: #fff;
 }
 
-
+/* Cellulari */
 @media (max-width: 767px) {
   .table-responsive .dropdown-menu {
         position: absolute;
@@ -318,12 +314,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   }
 }
 
-
+/* Classe small */
 small, .small {
   font-size: 80%;
 }
 
-
+/* Pulsante sfoglia */
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -350,15 +346,7 @@ input[readonly] {
   cursor: text !important;
 }
 
-.bg-green {   
-background: #f4ffe6; /* For browsers that do not support gradients */
-background: -webkit-linear-gradient(#f4ffe6, #ffffff); /* For Safari 5.1 to 6.0 */
-background: -o-linear-gradient(#f4ffe6, #ffffff); /* For Opera 11.1 to 12.0 */
-background: -moz-linear-gradient(#f4ffe6, #ffffff); /* For Firefox 3.6 to 15 */
-background: linear-gradient(#f4ffe6, #ffffff); /* Standard syntax */
-}
-
-/* Rules for sizing the icon. */
+/* Regole per utilizzo delle icone google */
 .material-icons.dd-17  { font-size: 17px;  }
 .material-icons.dd-18  { font-size: 18px;  }
 .material-icons.dd-24  { font-size: 24px;  }
@@ -368,15 +356,18 @@ background: linear-gradient(#f4ffe6, #ffffff); /* Standard syntax */
 .material-icons.dd-82  { font-size: 82px;  }
 .material-icons.dd-128 { font-size: 128px; }
 
+/* Impostazione al centro di un paragrafo o di un elemento */
 .material-icons.dd-middle { vertical-align: middle; margin-bottom:3px; }
-/* Rules for using icons as black on a light background. */
+
+/* Impostazione icona scura */
 .material-icons.dd-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.dd-dark.dd-inactive { color: rgba(0, 0, 0, 0.26); }
 
-/* Rules for using icons as white on a dark background. */
+/* Impostazione icona chiara */
 .material-icons.dd-light { color: rgba(255, 255, 255, 1); }
 .material-icons.dd-light.dd-inactive { color: rgba(255, 255, 255, 0.3); }
 
+/* Colore icona */
 .material-icons.dd-default { color: #d8d8d8; }
 .material-icons.dd-primary { color: #428bca; }   
 .material-icons.dd-success { color: #5cb85c; }      
@@ -384,24 +375,21 @@ background: linear-gradient(#f4ffe6, #ffffff); /* Standard syntax */
 .material-icons.dd-danger  { color: #d9534f; }  
 .material-icons.dd-info    { color: #5bc0de; } 
 
-
+/* Chapta modificato */
 #rc-imageselect, .g-recaptcha {
-
 transform:scale(0.86);
 -webkit-transform:scale(0.86);
 transform-origin:0 0;
 -webkit-transform-origin:0 0;
-
 }
 
+/* Classe per nascondere il testo su mobile */
 .ellipsis {
-
 white-space: nowrap; 
 text-overflow: ellipsis; 
 overflow: hidden;
-
 }                   
-
+/* Non far scorrere la textarea in orizzontale */
 textarea{
   resize:vertical;
 }

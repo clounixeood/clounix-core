@@ -27,9 +27,9 @@ class phpPayPal {
 	private $API_ENDPOINT	= 'https://api-3t.paypal.com/nvp';
 	private $PAYPAL_URL		= 'https://www.paypal.com/webscr&cmd=_express-checkout&token=';
 
-	public $API_USERNAME	= 'shop_api2.terastudio.it';
-	public $API_PASSWORD	= 'CH642K5L9T8VS2Y9';
-	public $API_SIGNATURE	= 'ANWfC5pYSEJK1Ih4Iur.exD0Ay5UAqKAIoN.ZDlYCNwGzLDTDwMz.hiJ';
+	public $API_USERNAME	= '';
+	public $API_PASSWORD	= '';
+	public $API_SIGNATURE	= '';
 
 	public $USE_PROXY		= false;
 	public $PROXY_HOST		= null;
