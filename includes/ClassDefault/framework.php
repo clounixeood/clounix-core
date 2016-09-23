@@ -1081,6 +1081,50 @@ class pnHTML {
         $this->output .= $content;
     }
     ////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap    
+    function ListOpen($attribute = array()) {
+    
+    
+    $content = "\t\t".'<ul';
+    
+    foreach ($attribute as $key => $value)  { $content .= ''.(($key == 'singletag') ? ' '.$value.'' : ' '.$key.'="'.$value.'"').''; }  
+    
+    $content .= '>'."\n";
+    $this->output .= $content;
+    
+    }   
+    ////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap    
+    function ListOpenItem($attribute = array(), $text) {
+    
+    
+    $content = "\t\t\t".'<li';
+    
+    foreach ($attribute as $key => $value)  { $content .= ''.(($key == 'singletag') ? ' '.$value.'' : ' '.$key.'="'.$value.'"').''; }  
+    
+    $content .= '>'."\n";
+    $content .= $text."\n";
+    $this->output .= $content;
+    
+    }   
+////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap    
+    function ListCloseItem() {
+    
+    $content .= "\t\t\t".'</li>'."\n";
+    
+    $this->output .= $content;
+    }
+////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap    
+    function ListClose() {
+    
+    $content .= "\t\t".'</ul>'."\n";
+    
+    $this->output .= $content;
+    }
+     
+////////////////////////////////////////////////////////////////////////////
 
     function SwitchOnOff($attribute = array(), $name = '', $val = '')
     {
