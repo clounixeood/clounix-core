@@ -131,7 +131,7 @@
         echo "\t" . '<script src="/javascript/bootstrap/js/bootstrap-validator.js"></script>' . "\n";
 
         //BlockUI e Rechapta
-        echo "\t" . '<script src="/javascript/blockui/blockui.js"></script>' . "\n";
+        echo "\t" . '<script src="/javascript/blocku/blocku.js"></script>' . "\n";
         echo "\t" . '<script src="//www.google.com/recaptcha/api.js"></script>' . "\n";
             
         //Includo tutti i file javascript che trovo
