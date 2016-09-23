@@ -133,7 +133,11 @@
         //BlockUI e Rechapta
         echo "\t" . '<script src="/javascript/blockUI/blockui.js"></script>' . "\n";
         echo "\t" . '<script src="//www.google.com/recaptcha/api.js"></script>' . "\n";
-
+            
+        //Includo tutti i file javascript che trovo
+        foreach(glob("custom/javascript/*.js") as $filename) {
+            echo "\t" . '<script src="/'.$filename.'"></script>' . "\n";
+        }
 
         ####################################################
         //Header personalizzato

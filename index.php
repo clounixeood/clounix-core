@@ -34,7 +34,7 @@
 
 
     ####################################################
-    include ('custom/getcountry.php');
+    include ('custom/country.php');
     ####################################################
 
     //faccio il redirect
