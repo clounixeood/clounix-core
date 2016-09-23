@@ -1,5 +1,5 @@
 <?php
-
+//
     global $PHP_SELF;
 
     //Controllo che il file non venga chiamato in modo diretto
