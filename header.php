@@ -73,7 +73,6 @@
         echo "\t" . '<link rel="stylesheet" href="/javascript/bootstrap-datepicker/css/bootstrap-datepicker.css">' . "\n";
         echo "\t" . '<link rel="stylesheet" href="/javascript/bootstrap-switch/css/bootstrap-switch.css">' . "\n";
         echo "\t" . '<link rel="stylesheet" href="/javascript/bootstrap-checkbox/css/bootstrap-checkbox.css">' . "\n";
-        echo "\t" . '<link rel="stylesheet" href="/javascript/bootstrap/css/bootstrap-custom.css">' . "\n";
         echo "\t" . '<link rel="stylesheet" href="/javascript/bootstrap/css/bootstrap-validator.css"/>' . "\n";
         echo "\t" . '<link rel="stylesheet" href="/javascript/cookiebar/jquery.cookiebar.css">' . "\n";
         echo "\t" . '<link rel="stylesheet" href="/javascript/bootstrap-datatables/bootstrap-datatables.css">' . "\n";
@@ -81,7 +80,7 @@
         //file per CSS personalizzato
         $filecssmodule = 'modules/' . pnModGetName() . '/style.css';
         //file per CSS personalizzato
-        $filecssglobal = 'modules/' . pnSessionGetVar('theme') . '/custom.css';
+        $filecssglobal = 'themes/' . pnSessionGetVar('theme') . '/style/custom.css';
 
 
 
