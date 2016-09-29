@@ -221,7 +221,7 @@ class PHPMailer
      * Hosts will be tried in order.
      * @type string
      */
-    public $Host = 'server.clounix.net';
+    public $Host = '';
 
     /**
      * The default SMTP server port.
@@ -258,13 +258,13 @@ class PHPMailer
      * SMTP username.
      * @type string
      */
-    public $Username = 'service@clounix.net';
+    public $Username = '';
 
     /**
      * SMTP password.
      * @type string
      */
-    public $Password = 'hz2109bg$';
+    public $Password = '';
 
     /**
      * SMTP auth type.

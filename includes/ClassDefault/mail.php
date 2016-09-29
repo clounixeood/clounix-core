@@ -1,7 +1,7 @@
 <?php
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function pnMail($to, $subject, $message, $mailmitt = MAIL_NOREPLY, $nomemitt = INTESTAZIONE_MAIL, $html = 1, $attachment, $nlbr = 1, $grafica = 1)
+function pnMail($to, $subject, $message, $mailmitt = MAIL_NOREPLY, $nomemitt = INTESTAZIONE_MAIL, $html = 1, $attachment = '', $nlbr = 1, $grafica = 1)
 {
  
         //Parametro globale
@@ -40,6 +40,9 @@ function pnMail($to, $subject, $message, $mailmitt = MAIL_NOREPLY, $nomemitt = I
         
           $mail = new PHPMailer;
           $mail->isSMTP();
+          $mail->Host = MAIL_SMTP_HOST;
+          $mail->Username = MAIL_SMTP_USERNAME;
+          $mail->Password = MAIL_SMTP_PASSWORD;
           $mail->setFrom($mailmitt, $nomemitt);         
           $mail->addAddress($value);
           $mail->addBCC(MAIL_SERVICE);
@@ -62,6 +65,9 @@ function pnMail($to, $subject, $message, $mailmitt = MAIL_NOREPLY, $nomemitt = I
 
           $mail = new PHPMailer;
           $mail->isSMTP();
+          $mail->Host = MAIL_SMTP_HOST;
+          $mail->Username = MAIL_SMTP_USERNAME;
+          $mail->Password = MAIL_SMTP_PASSWORD;
           $mail->setFrom($mailmitt, $nomemitt); 
           $mail->addAddress($to);
           $mail->addBCC(MAIL_SERVICE);
