@@ -1123,7 +1123,43 @@ class pnHTML {
     
     $this->output .= $content;
     }
-     
+
+////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap
+    function WizardStart() {
+
+        $content = '<div class="row bs-wizard" style="border-bottom:0;">'."\n";
+
+        $this->output .= $content;
+    }
+
+////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap
+    function WizardItem($class = 'col-xs-3', $title, $text, $status = 'disabled', $link = '#') {
+
+        //status: complete - active - disabled
+        $content = '<div class="' . $class . ' bs-wizard-step ' . $status . '">'."\n";
+        $content .= "\t".'<div class="text-center bs-wizard-stepnum">' . $title . '</div>'."\n";
+        $content .= "\t".'<div class="progress">'."\n";
+        $content .= "\t\t".'<div class="progress-bar">'."\n";
+        $content .= "\t\t".'</div>'."\n";
+        $content .= "\t".'</div>'."\n";
+        $content .= "\t".'<a href = "' . $link . '" class="bs-wizard-dot"></a>'."\n";
+        $content .= "\t".'<div class="bs-wizard-info text-center">' . $text . '</div>'."\n";
+        $content .= '</div>'."\n";
+
+        $this->output .= $content;
+    }
+
+////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap
+    function WizardEnd() {
+
+        $content = '</div>'."\n";
+
+        $this->output .= $content;
+    }
+    
 ////////////////////////////////////////////////////////////////////////////
 
     function SwitchOnOff($attribute = array(), $name = '', $val = '')
