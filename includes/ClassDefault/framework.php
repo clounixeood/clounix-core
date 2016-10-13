@@ -1037,7 +1037,7 @@ class pnHTML {
 
         foreach ($attribute as $key => $value)  { $content .= ''.(($key == 'singletag') ? ' '.$value.'' : ' '.$key.'="'.$value.'"').''; }         
         
-        if ($attribute['titlesize'] == '') { $attribute['titlesize']    = "h4"; }
+        if ($attribute['titlesize'] == '') { $attribute['titlesize'] = "h4"; }
         if ($attribute['bodysize'] == '')  { $attribute['bodysize'] = "0.9em"; }
         
         
@@ -1045,7 +1045,7 @@ class pnHTML {
         $content .= "\t\t\t\t".'<img src="'.$img.'" data-src="'.$img.'" '.(($attribute['imgwidth'] != '') ? 'width="'.$attribute['imgwidth'].'"' : '').'>'."\n";        
         $content .= "\t\t\t".'</a>'."\n"; 
         $content .= "\t\t\t".'<div class="media-body">'."\n";
-        $content .= "\t\t\t".'<'.$attribute['titlesize'].' class="media-heading">'.$title.'</h4>'."\n";        
+        $content .= "\t\t\t".'<'.$attribute['titlesize'].' class="media-heading">'.$title.'</'.$attribute['titlesize'].'>'."\n";        
         $content .= "\t\t\t".'<font style="font-size: '.$attribute['bodysize'].'; color: #999999;">'.$description.'</font>'."\n";  
         $content .= "\t\t\t".'</div>'."\n";         
         $content .= "\t\t".'</div>'."\n";                        
@@ -1072,7 +1072,7 @@ class pnHTML {
         $content .= "\t\t\t\t".'<i '.(($attribute['noattr_imgcolor'] != '') ? 'style="color:'.$attribute['noattr_imgcolor'].'";' : '').' class="material-icons '.(($attribute['noattr_imgalign'] != '') ? $attribute['noattr_imgalign'] : '').' '.(($attribute['noattr_imgsize'] != '') ? $attribute['noattr_imgsize'] : '').' ">'.$name.'</i>'."\n";        
         $content .= "\t\t\t".'</a>'."\n"; 
         $content .= "\t\t\t".'<div class="media-body">'."\n";
-        $content .= "\t\t\t".'<'.$attribute['noattr_titlesize'].' class="media-heading">'.$title.'</h4>'."\n";        
+        $content .= "\t\t\t".'<'.$attribute['noattr_titlesize'].' class="media-heading">'.$title.'</'.$attribute['noattr_titlesize'].'>'."\n";        
         $content .= "\t\t\t".'<font style="font-size: '.$attribute['noattr_bodysize'].'; color: #999999;">'.$description.'</font>'."\n";  
         $content .= "\t\t\t".'</div>'."\n";         
         $content .= "\t\t".'</div>'."\n";                        
