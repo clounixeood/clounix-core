@@ -396,7 +396,7 @@
         }
 
         //Query
-        $q = $mysqli->query("SELECT admin FROM _groups WHERE gid='$gruppo' LIMIT 1");
+        $q = $mysqli->query("SELECT admin FROM _groups WHERE gid='$group' LIMIT 1");
 
 
         //Tiro fuori admin o meno
@@ -423,7 +423,7 @@
             PnSessionDelVar('permissions_page');  
         } else {
 
-            $q = $mysqli->query("SELECT * FROM _permissions WHERE (gid='$gruppo' OR gid='*') AND (module='$module' OR module='*')");
+            $q = $mysqli->query("SELECT * FROM _permissions WHERE (gid='$group' OR gid='*') AND (module='$module' OR module='*')");
 
             //Imposto il permesso = 0
             $permesso = 0;
