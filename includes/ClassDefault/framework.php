@@ -579,7 +579,7 @@ class pnHTML {
         $randform = rand(10, 99);
     
         $content = "\t<!-- FormStart -->\n<form"
-                    .' role="form" action="'.$action.'" method="'.$method.'" name="'.$name.'" id="'.$name.(($attribute['noattr_single'] != 1) ? $randform : '')).'"';
+                    .' role="form" action="'.$action.'" method="'.$method.'" name="'.$name.'" id="'.$name.(($attribute['noattr_single'] != 1) ? ''.$randform.'' : '')).'"';
                            
         foreach ($attribute as $key => $value)  { if (substr($key, 0, 7) != 'noattr_') {$content .= ''.(($value == '') ? ' '.$key.'' : ' '.$key.'="'.$value.'"'."\n").''; }  }      
         
@@ -588,7 +588,7 @@ class pnHTML {
         //Genero un campo hidden casuale per la sicureza del form
         $hashkey = rand(1000000, 99999999); 
         
-        if($attribute['noattr_validation'] == '1') { $content .= "\t".'<script>$(document).ready(function() { $(\'#'.$name.(($attribute['noattr_single'] != 1) ? $randform : '')).'\').bootstrapValidator(); });</script>'."\n"; }
+        if($attribute['noattr_validation'] == '1') { $content .= "\t".'<script>$(document).ready(function() { $(\'#'.$name.(($attribute['noattr_single'] != 1) ? ''.$randform.'' : '')).'\').bootstrapValidator(); });</script>'."\n"; }
         
         //Imposto la variabile hashkey - IMPORTANTE
         PnSessionSetVar('form_hashkey', $hashkey);
