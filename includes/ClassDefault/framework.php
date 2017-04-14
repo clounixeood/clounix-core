@@ -674,7 +674,93 @@ class pnHTML {
                     
         $this->output .= $content;
     }
+    ////////////////////////////////////////////////////////////////////////////  
+     // Genera un input di tipo test V.1.0
+    ////////////////////////////////////////////////////////////////////////////   
+    function TextAutocomplete($attribute = array(), $type = 'text', $name = '', $label = '') {
 
+        $content .= "<script> $(function () {";
+        
+        //sblocco
+        if (($attribute['value'] != '') && ($attribute['value'] != 0)) {  
+        
+        $content .= "document.getElementById('" . $name . "-input').value = '".$attribute['valuetxt']."';";
+        $content .= "document.getElementById('" . $name . "-input').disabled = true;";
+        $content .= "document.getElementById('" . $name . "-btn').disabled = false;"; 
+        $content .= "document.getElementById('" . $name . "').value = '".$attribute['value']."';";
+
+        } else {
+        
+        $content .= "document.getElementById('" . $name . "-input').value = '';";        
+        $content .= "document.getElementById('" . $name . "-input').disabled = false;";
+        $content .= "document.getElementById('" . $name . "-btn').disabled = true;";
+        $content .= "document.getElementById('" . $name . "').value = '0';";
+        
+                
+        }
+
+
+        
+        //typeahead
+        $content .= "$('#" . $name . "-input').typeahead({onSelect: function(item) {
+                                                          document.getElementById('" . $name . "').value = item.value;
+                                                          document.getElementById('" . $name . "-input').disabled = true;
+                                                          document.getElementById('" . $name . "-btn').disabled = false;";
+        
+
+        
+        
+        
+        $content .= "}, items: 10,
+                        ajax: { url: '" . $attribute['url'] . "', method: 'POST', triggerLength: 1 }
+                     });
+                     });
+
+                    function AutocompleteUnlock(){  document.getElementById('$name-input').disabled = false;
+                                                    document.getElementById('$name-input').value = '';
+                                                    document.getElementById('$name').value = 0;
+                                                    document.getElementById('$name-btn').disabled = true;
+                                                    }
+                    
+                    </script>";
+
+
+        //Content
+        $content .= "\t" . '<div class="form-group ' . (($attribute['color'] != '') ? '' . $attribute['color'] . '' : '') . '">' . "\n";
+
+        //Inserisco lo script
+        if ($attribute['help'] != '') { $content .= "\t\t\t" . '<script> $(function () { $(\'[data-toggle="tooltip"]\').tooltip() }) </script>' . "\n"; }
+        
+        //Controllo etichetta
+        if ($label != '') { $content .= "\t\t" . '<label style="padding-left: 2px;" for="' . $name . '">' . $label . '' . ""; }
+        
+        if ($attribute['help'] != '') { $content .= "\t\t\t" . '<i class="material-icons dd-middle" style="color:#8BC3E0; cursor: pointer;" data-toggle="tooltip" data-placement="right" title="' . $attribute['help'] . '">info</i> ' . "\n\n"; }
+        
+        if ($label != '') { $content .= "\t\t" . '</label>' . "\n"; }
+
+        $content .= "\t\t" . '<div class="input-group">' . "\n";
+
+        $content .= "\t\t\t" . '<input data-provide="typeahead" type="' . $type . '" name="' . $name . '-input" id="' . $name . '-input"';
+
+        foreach ($attribute as $key => $value) { if (!preg_match('/addon|value|url/', $key)) { $content .= '' . (($key == 'singletag') ? ' ' . $value . '' : ' ' . $key . '="' . $value . '"') . ''; } }
+        
+        $content .= "/>\n";
+
+        //pulsante a destra
+        $content .= "\t\t"   . '<span class="input-group-btn">' . "\n";
+        $content .= "\t\t\t" . '<button id="'.$name.'-btn" class="btn btn-default btn-md" type="button" onClick="AutocompleteUnlock()"><i class="material-icons dd-17 dd-middle">touch_app</i></button>' . "\n";
+        $content .= "\t\t"   . '</span>' . "\n";
+
+        $content .= "\t\t"   . '</div>' . "\n";
+
+        $content .= "\t\t"   . '<input type="hidden" id="' . $name . '" name="' . $name . '" value="">' . "\n";
+
+        $content .= "\t"     . '</div>' . "\n\n";
+
+        if ($attribute['info'] != '') { $content .= "\t\t\t" . '<span id="helpBlock" class="small help-block" style="padding-left: 2px;">' . $attribute['info'] . '</span>' . "\n"; }
+
+        $this->output .= $content;
+    }
     ////////////////////////////////////////////////////////////////////////////  
      // Genera un input di tipo test V.1.0
     ////////////////////////////////////////////////////////////////////////////     
