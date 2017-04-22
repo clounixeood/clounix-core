@@ -737,9 +737,15 @@ class pnHTML {
         if ($attribute['help'] != '') { $content .= "\t\t\t" . '<i class="material-icons dd-middle" style="color:#8BC3E0; cursor: pointer;" data-toggle="tooltip" data-placement="right" title="' . $attribute['help'] . '">info</i> ' . "\n\n"; }
         
         if ($label != '') { $content .= "\t\t" . '</label>' . "\n"; }
+<<<<<<< HEAD
 
         $content .= "\t\t" . '<div class="input-group">' . "\n";
 
+=======
+
+        $content .= "\t\t" . '<div class="input-group">' . "\n";
+
+>>>>>>> origin/master
         $content .= "\t\t\t" . '<input data-provide="typeahead" type="' . $type . '" name="' . $name . '-input" id="' . $name . '-input"';
 
         foreach ($attribute as $key => $value) { if (!preg_match('/addon|value|url/', $key)) { $content .= '' . (($key == 'singletag') ? ' ' . $value . '' : ' ' . $key . '="' . $value . '"') . ''; } }
@@ -748,7 +754,11 @@ class pnHTML {
 
         //pulsante a destra
         $content .= "\t\t"   . '<span class="input-group-btn">' . "\n";
+<<<<<<< HEAD
         $content .= "\t\t\t" . '<button id="'.$name.'-btn" class="btn btn-default btn-md" type="button" onClick="AutocompleteUnlock()"><i class="material-icons dd-17 dd-middle">replay</i></button>' . "\n";
+=======
+        $content .= "\t\t\t" . '<button id="'.$name.'-btn" class="btn btn-default btn-md" type="button" onClick="AutocompleteUnlock()"><i class="material-icons dd-17 dd-middle">touch_app</i></button>' . "\n";
+>>>>>>> origin/master
         $content .= "\t\t"   . '</span>' . "\n";
 
         $content .= "\t\t"   . '</div>' . "\n";

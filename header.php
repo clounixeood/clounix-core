@@ -14,17 +14,10 @@
     require_once( "javascript/xajax/xajax_core/xajax.inc.php");
 
     //Se esiste un file ajax personalizzato lo includo
-    if (file_exists('modules/' . pnModGetName() . '/xajax.php')) {
-        include('modules/' . pnModGetName() . '/xajax.php');
-    }
-
-
+    if (file_exists('modules/' . pnModGetName() . '/xajax.php')) { include('modules/' . pnModGetName() . '/xajax.php'); }
+    
     //imposto il tema
-    if ($_GET['theme'] != '') {
-        PnSessionSetVar('theme', $_GET['theme']);
-    } else {
-        PnSessionSetVar('theme', 'Default');
-    }
+    if ($_GET['theme'] != '') { PnSessionSetVar('theme', $_GET['theme']); } else { PnSessionSetVar('theme', 'Default'); }
 
 
     //Inizio lo standard output
@@ -38,7 +31,7 @@
 
     echo "\t" . '<meta charset="utf-8" />' . "\n";
     echo "\t" . '<meta name="viewport" content="width=device-width, initial-scale=1.0" />' . "\n";
-    echo "\t" . '<meta property="og:image" content="http://' . DOMINIO_WWW . '/themes/' . PnSessionGetVar('theme') . '/images/logo.png" />' . "\n";
+    echo "\t" . '<meta property="og:image" content="//' . DOMINIO_WWW . '/themes/' . PnSessionGetVar('theme') . '/images/logo.png" />' . "\n";
 
     //Prendo i metatags dinamici
     GetMetaTags($artpage);
@@ -119,6 +112,7 @@
 
         //JS Principale
         echo "\t" . '<script src="/javascript/bootstrap/js/bootstrap.js"></script>' . "\n";
+        echo "\t" . '<script src="/javascript/bootstrap-typeahead/bootstrap-typeahead.min.js"></script>' . "\n";
         echo "\t" . '<script src="/javascript/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>' . "\n";
         echo "\t" . '<script src="/javascript/bootstrap-select/js/bootstrap-select.js"></script>' . "\n";
         echo "\t" . '<script src="/javascript/bootstrap-switch/js/bootstrap-switch.js"></script>' . "\n";
