@@ -674,7 +674,93 @@ class pnHTML {
                     
         $this->output .= $content;
     }
+    ////////////////////////////////////////////////////////////////////////////  
+     // Genera un input di tipo test V.1.0
+    ////////////////////////////////////////////////////////////////////////////   
+    function TextAutocomplete($attribute = array(), $type = 'text', $name = '', $label = '') {
 
+        $content .= "<script> $(function () {";
+        
+        //sblocco
+        if (($attribute['value'] != '') && ($attribute['value'] != 0)) {  
+        
+        $content .= "document.getElementById('" . $name . "-input').value = '".$attribute['valuetxt']."';";
+        $content .= "document.getElementById('" . $name . "-input').disabled = true;";
+        $content .= "document.getElementById('" . $name . "-btn').disabled = false;"; 
+        $content .= "document.getElementById('" . $name . "').value = '".$attribute['value']."';";
+
+        } else {
+        
+        $content .= "document.getElementById('" . $name . "-input').value = '';";        
+        $content .= "document.getElementById('" . $name . "-input').disabled = false;";
+        $content .= "document.getElementById('" . $name . "-btn').disabled = true;";
+        $content .= "document.getElementById('" . $name . "').value = '0';";
+        
+                
+        }
+
+
+        
+        //typeahead
+        $content .= "$('#" . $name . "-input').typeahead({onSelect: function(item) {
+                                                          document.getElementById('" . $name . "').value = item.value;
+                                                          document.getElementById('" . $name . "-input').disabled = true;
+                                                          document.getElementById('" . $name . "-btn').disabled = false;";
+        
+
+        
+        
+        
+        $content .= "}, items: 10,
+                        ajax: { url: '" . $attribute['url'] . "', method: 'POST', triggerLength: 1 }
+                     });
+                     });
+
+                    function AutocompleteUnlock(){  document.getElementById('$name-input').disabled = false;
+                                                    document.getElementById('$name-input').value = '';
+                                                    document.getElementById('$name').value = 0;
+                                                    document.getElementById('$name-btn').disabled = true;
+                                                    }
+                    
+                    </script>";
+
+
+        //Content
+        $content .= "\t" . '<div class="form-group ' . (($attribute['color'] != '') ? '' . $attribute['color'] . '' : '') . '">' . "\n";
+
+        //Inserisco lo script
+        if ($attribute['help'] != '') { $content .= "\t\t\t" . '<script> $(function () { $(\'[data-toggle="tooltip"]\').tooltip() }) </script>' . "\n"; }
+        
+        //Controllo etichetta
+        if ($label != '') { $content .= "\t\t" . '<label style="padding-left: 2px;" for="' . $name . '">' . $label . '' . ""; }
+        
+        if ($attribute['help'] != '') { $content .= "\t\t\t" . '<i class="material-icons dd-middle" style="color:#8BC3E0; cursor: pointer;" data-toggle="tooltip" data-placement="right" title="' . $attribute['help'] . '">info</i> ' . "\n\n"; }
+        
+        if ($label != '') { $content .= "\t\t" . '</label>' . "\n"; }
+
+        $content .= "\t\t" . '<div class="input-group">' . "\n";
+
+        $content .= "\t\t\t" . '<input data-provide="typeahead" type="' . $type . '" name="' . $name . '-input" id="' . $name . '-input"';
+
+        foreach ($attribute as $key => $value) { if (!preg_match('/addon|value|url/', $key)) { $content .= '' . (($key == 'singletag') ? ' ' . $value . '' : ' ' . $key . '="' . $value . '"') . ''; } }
+        
+        $content .= "/>\n";
+
+        //pulsante a destra
+        $content .= "\t\t"   . '<span class="input-group-btn">' . "\n";
+        $content .= "\t\t\t" . '<button id="'.$name.'-btn" class="btn btn-default btn-md" type="button" onClick="AutocompleteUnlock()"><i class="material-icons dd-17 dd-middle">replay</i></button>' . "\n";
+        $content .= "\t\t"   . '</span>' . "\n";
+
+        $content .= "\t\t"   . '</div>' . "\n";
+
+        $content .= "\t\t"   . '<input type="hidden" id="' . $name . '" name="' . $name . '" value="">' . "\n";
+
+        $content .= "\t"     . '</div>' . "\n\n";
+
+        if ($attribute['info'] != '') { $content .= "\t\t\t" . '<span id="helpBlock" class="small help-block" style="padding-left: 2px;">' . $attribute['info'] . '</span>' . "\n"; }
+
+        $this->output .= $content;
+    }
     ////////////////////////////////////////////////////////////////////////////  
      // Genera un input di tipo test V.1.0
     ////////////////////////////////////////////////////////////////////////////     
@@ -718,7 +804,7 @@ class pnHTML {
         $content .= "\t\t\t".'<li role="presentation">'."\n";
         
         //Inserisco il link
-        $content .= "\t\t\t\t".'<a role="menuitem" tabindex="-1" '.(($arrayitem['url'] != '') ? 'href="'.$arrayitem['url'].'"' : 'href="javascript:void(0)"').'" '.((preg_match("/Delete|Remove|Elimina|Cancella/i", $arrayitem['url'])) ? 'onclick="'.$arrayitem['ajax'].' return confirm(\'Confermi questa operazione ?\');"' : 'onclick="'.$arrayitem['ajax'].'"').'>'."\n";        
+        $content .= "\t\t\t\t".'<a role="menuitem" tabindex="-1" '.(($arrayitem['url'] != '') ? 'href="'.$arrayitem['url'].'"' : 'href="javascript:void(0)"').' '.((preg_match("/Delete|Remove|Elimina|Cancella/i", $arrayitem['url'])) ? 'onclick="'.$arrayitem['ajax'].' return confirm(\'Confermi questa operazione ?\');"' : 'onclick="'.$arrayitem['ajax'].'"').'>'."\n";        
 
         //Controllo se ci sono immagini da inserire
         if ($arrayitem['icon'] != '') { $content .= "\t\t\t\t".'<span class="'.$arrayitem['iconposition'].'">'.$arrayitem['icon'].'</span> '."\n"; }
@@ -852,20 +938,45 @@ class pnHTML {
       }
 ////////////////////////////////////////////////////////////////////////////
 /////////////// Bootstrap
-    function PanelOpen($attribute = array(), $head = '') {
+    function PanelOpen($attribute, $head) {
 
        $content  = "\t".'<div';
        
-       foreach ($attribute as $key => $value)  { $content .= ''.(($key == 'singletag') ? ' '.$value.'' : ' '.$key.'="'.$value.'"').''; }
+       foreach ($attribute as $key => $value)  { if (substr($key, 0, 7) != 'noattr_') { $content .= ''.(($key == 'singletag') ? ' '.$value.'' : ' '.$key.'="'.$value.'"').''; } }
        
        $content .= ">\n";
-       if ($head != '') { $content .= "\t\t".'<div class="panel-heading">'.$head.'</div>'."\n"; }       
        
-       $content .= "\t\t\t".'<div class="panel-body">'."\n";
+       if ($head != '') { $content .= "\t\t".'<div class="panel-heading"><font style="color: #777777; font-weight: 500;">'.$head.'</font></div>'."\n"; }       
        
+       $content .= "\t\t\t".'<div style="position:relative;" class="panel-body">'."\n";
+
        $this->output .= $content;
 
-      }
+      }  
+////////////////////////////////////////////////////////////////////////////
+/////////////// Bootstrap
+    function PanelHead($attribute, $head) {
+ 
+       
+       $content .= "\t\t\t".'<div '."\n";  
+       
+       foreach ($attribute as $key => $value)  { if (substr($key, 0, 7) != 'noattr_') { $content .= ''.(($key == 'singletag') ? ' '.$value.'' : ' '.$key.'="'.$value.'"').''; } }
+       
+       $content .= ">\n";
+       
+
+       if ($head != '') { 
+       
+       $content .= "\t\t\t\t".'<div style="position: absolute; bottom: 0; width: 100%; padding: 15px;">'.$head.'</div>'."\n"; 
+       
+       }
+       
+       $content .= "\t\t\t".'</div>'."\n";       
+       
+
+       $this->output .= $content;
+
+      } 
 ////////////////////////////////////////////////////////////////////////////
 /////////////// Bootstrap
     function PanelClose() {

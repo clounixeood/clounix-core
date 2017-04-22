@@ -143,8 +143,8 @@
     header: false,
     liveSearch: false,
     actionsBox: false,
-    iconBase: 'glyphicon',
-    tickIcon: 'glyphicon-ok',
+    iconBase: 'material-icons',
+    tickIcon: 'done',
     maxOptions: false,
     mobile: false,
     selectOnTab: false,
@@ -284,7 +284,7 @@
         (typeof optgroup !== 'undefined' ? 'data-optgroup="' + optgroup + '"' : '') +
         ' data-normalized-text="' + normText + '"' +
         '>' + text +
-        '<span class="' + that.options.iconBase + ' ' + that.options.tickIcon + ' check-mark"></span>' +
+        '<span class="' + that.options.iconBase + ' check-mark">' + that.options.tickIcon + '</span>' +
         '</a>';
       };
 

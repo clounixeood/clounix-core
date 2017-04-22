@@ -51,39 +51,72 @@ return true;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function T($m, $text)
+// function T($m, $text)
+// {
+//     
+// 
+//       //Parametro globale
+//       global $mysqli, $pnconfig;
+//       
+//       //Una definizione è composta da __MODULO_LUNGHEZZA,PRIME3LETTERE,ULTIMETRELETTERE,NUMERODISPAZI
+//       $l  = strlen($text);
+//       $pt = substr(preg_replace("/[^A-Za-z0-9]/","",$text), 0, 2);
+//       $ut = substr(preg_replace("/[^A-Za-z0-9]/","",$text), -2);
+//       
+//       $def = strtoupper("__".$m."_".$l."".$pt."".$ut."");
+//       
+//       //Se questa definizione non esiste
+//       if (!defined($def)) { 
+//       
+//       //API KEY
+//       $apiKey = GOOGLE_API_KEY;
+//       
+//       //Se non è definita la inserisco dentro mysql
+//       $q = $mysqli->query("INSERT INTO _languages (define, en, it, needhuman, datareg, lastupdate, type, found) VALUES ('$def', '', '".addslashes($text)."', '1', '".time()."', '".time()."','1', '1')");
+//     
+//       return $text;
+//       
+//       } else {
+//       
+//       return constant($def);
+//       
+//       
+//       } 
+// 
+// }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function T($text, $parameters = array())
 {
-    
 
-      //Parametro globale
-      global $mysqli, $pnconfig;
-      
+      global $mysqli;
       //Una definizione è composta da __MODULO_LUNGHEZZA,PRIME3LETTERE,ULTIMETRELETTERE,NUMERODISPAZI
-      $l  = strlen($text);
-      $pt = substr(preg_replace("/[^A-Za-z0-9]/","",$text), 0, 2);
-      $ut = substr(preg_replace("/[^A-Za-z0-9]/","",$text), -2);
       
-      $def = strtoupper("__".$m."_".$l."".$pt."".$ut."");
+      //Trasformo in md5
+      $uti = md5($text);
+      
+      $def = strtoupper("__L_".$uti."");
       
       //Se questa definizione non esiste
       if (!defined($def)) { 
       
-      //API KEY
-      $apiKey = GOOGLE_API_KEY;
       
       //Se non è definita la inserisco dentro mysql
-      $q = $mysqli->query("INSERT INTO _languages (define, en, it, needhuman, datareg, lastupdate, type, found) VALUES ('$def', '', '".addslashes($text)."', '1', '".time()."', '".time()."','1', '1')");
-    
-      return $text;
+      $o = $mysqli->query("INSERT INTO _languages (define, en, it, needhuman, datareg, lastupdate, type, found) VALUES ('$def', '', '".addslashes($text)."', '1', '".time()."', '".time()."','1', '1')");
+      
+      return "!! ".$text." !!";
       
       } else {
       
-      return constant($def);
+      //Creo la variabile
+      $var = sprintf(str_replace("% ", "%% ", constant($def)), $parameters[0], $parameters[1], $parameters[2], $parameters[3], $parameters[4], $parameters[5]);
+      
+      //Return
+      return $var;
       
       
       } 
 
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ?>
