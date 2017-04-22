@@ -217,7 +217,7 @@
           '<div class="btn-group bootstrap-select' + multiple + inputGroup + '">' +
           '<button type="button" class="btn dropdown-toggle selectpicker' + btnSize + '" data-toggle="dropdown"' + autofocus + '>' +
           '<span class="filter-option pull-left"></span>&nbsp;' +
-          '<span class="caret"></span>' +
+          '<i class="material-icons dd-middle dd-17">expand_more</i>' +
           '</button>' +
           '<div class="dropdown-menu open">' +
           header +
