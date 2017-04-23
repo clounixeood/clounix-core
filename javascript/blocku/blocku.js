@@ -112,7 +112,7 @@
 		// override these in your code to change the default behavior and style
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
-			message:  '<b>Please wait...</b>',
+			message:  '<img src="/javascript/blocku/preloader.gif" width="100"><br><b>Please wait...</b><br>Do not close this windows<br><br>',
 
 			title: null,		// title string; only used when theme == true
 			draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
@@ -125,9 +125,9 @@
 			css: {
 				padding:	10,
 				margin:		0,
-				width:		'30%',
-				top:		  '40%',
-				left:		  '35%',
+				width:		'45%',
+				top:		  '28%',
+				left:		  '27%',
 				textAlign:	'center',
 				color:		'#444444',
 				border:		'2px solid #bbbbbb',
@@ -137,7 +137,7 @@
 
 			// minimal style set used when themes are used
 			themedCSS: {
-				width:	'30%',
+				width:	'50%',
 				top:	'40%',
 				left:	'35%'
 			},
@@ -145,7 +145,7 @@
 			// styles for the overlay
 			overlayCSS:  {
 				backgroundColor:	'#FFFFFF',
-				opacity:			0.6,
+				opacity:			0.8,
 				cursor:				'wait'
 			},
 

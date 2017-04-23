@@ -31,6 +31,7 @@
 
     echo "\t" . '<meta charset="utf-8" />' . "\n";
     echo "\t" . '<meta name="viewport" content="width=device-width, initial-scale=1.0" />' . "\n";
+    echo "\t" . '<meta name="theme-color" content="'.THEME_COLOR.'">'."\n";
     echo "\t" . '<meta property="og:image" content="//' . DOMINIO_WWW . '/themes/' . PnSessionGetVar('theme') . '/images/logo.png" />' . "\n";
 
     //Prendo i metatags dinamici

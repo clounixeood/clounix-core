@@ -129,7 +129,7 @@
     selectAllText: 'Select All',
     deselectAllText: 'Deselect All',
     multipleSeparator: ', ',
-    style: 'btn-default',
+    style: 'btn-select',
     size: 'auto',
     title: null,
     selectedTextFormat: 'values',
